@@ -16,19 +16,19 @@ class Solution {
 
         ListNode smallHead = small;
         ListNode highHead = high;
-        ListNode curr = head;
-        while(curr!=null){
-            if(curr.val < x){
+        
+        while(head!=null){
+            if(head.val < x){
                 //small list
-                smallHead.next = curr;
+                smallHead.next = head;
                 smallHead = smallHead.next;
             }
             else{
                 //high list
-                highHead.next = curr;
+                highHead.next = head;
                 highHead = highHead.next;
             }
-            curr = curr.next;
+            head = head.next;
         }
 
         
