@@ -19,7 +19,7 @@ class Solution {
             int index = Math.abs(nums[i])-1;
 
             if(nums[index]<0)
-            result.add(Math.abs(nums[i]));
+            result.add(index+1);
 
             nums[index] = nums[index]*(-1);
         }
