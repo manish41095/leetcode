@@ -1,10 +1,7 @@
 class Solution {
     public int maxSubarraySumCircular(int[] nums) {
 
-        int n = nums.length;
-        if(n <= 1){
-            return nums[0];
-        }
+        
         int minSum = nums[0];
         int currSum = nums[0];
         int maxSum = nums[0];
@@ -12,7 +9,7 @@ class Solution {
         int totalSum = nums[0];
 
         //Kadanes algo to find min and max sum subarray 
-        for(int i = 1; i< n; i++){
+        for(int i = 1; i< nums.length; i++){
             totalSum = totalSum + nums[i];
 
             currSum = Math.min(nums[i], currSum + nums[i]);
