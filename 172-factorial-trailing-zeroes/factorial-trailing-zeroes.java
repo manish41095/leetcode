@@ -14,9 +14,13 @@ class Solution {
     //     fact= fact/10;
     //    }
     int count = 0;
-    for (int i = 5; n / i >= 1; i *= 5) {
-        count += n / i;
-    }
+    // for (int i = 5; n / i >= 1; i *= 5) {
+    //     count += n / i;
+    // }
+    while (n > 0) {
+            n = n / 5;
+            count += n;
+        }
     return count;
     }
 }
