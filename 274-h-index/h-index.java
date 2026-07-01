@@ -1,18 +1,18 @@
 class Solution {
     public int hIndex(int[] citations) {
-        int n = citations.length;
-        int[] arr = new int[n+1];
+        int len = citations.length;
+        int[] arr = new int[len+1];
 
-        for(int c : citations){
-            if(c>n)
-                arr[n]++;
+        for(int num : citations){
+            if(num > len )
+                arr[len]++;
             else
-               arr[c]++;
+               arr[num]++;
         }
 
         int count = 0;
 
-        for(int i = n; i>=0 ; i--){
+        for(int i = len; i>=0 ; i--){
             count += arr[i];
             if(count>=i)
               return i;
