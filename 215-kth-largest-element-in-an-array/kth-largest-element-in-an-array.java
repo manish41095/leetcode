@@ -13,6 +13,6 @@ class Solution {
             minHeap.poll();
         }
       }
-       return minHeap.poll(); 
+       return minHeap.peek(); 
     }
 }
