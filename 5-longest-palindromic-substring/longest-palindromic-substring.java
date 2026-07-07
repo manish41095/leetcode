@@ -43,8 +43,8 @@ class Solution {
             return s;
 
         for (int i = 0; i < n - 1; i++) {
-            expand(s, i, i);
-            expand(s, i, i + 1);
+            expand(s, i, i); // odd length string
+            expand(s, i, i + 1); // even length string 
         }
         return s.substring(start, start + maxLen);
     }
@@ -54,9 +54,10 @@ class Solution {
             begin--;
             end++;
         }
-        if (maxLen < (end - begin - 1)) {
+        int len = end - begin - 1;
+        if (maxLen < len) {
             start = begin + 1;
-            maxLen = end - begin - 1;
+            maxLen = len;
         }
     }
 }
