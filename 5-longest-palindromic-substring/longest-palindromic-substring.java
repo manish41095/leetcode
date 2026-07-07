@@ -51,13 +51,14 @@ class Solution {
 
     public void expand(String s, int begin, int end) {
         while (begin >= 0 && end < s.length() && s.charAt(begin) == s.charAt(end)) {
+            int len = end - begin + 1;
+            if (maxLen < len) {
+                start = begin;
+                maxLen = len;
+            }
             begin--;
             end++;
         }
-        int len = end - begin - 1;
-        if (maxLen < len) {
-            start = begin + 1;
-            maxLen = len;
-        }
+
     }
 }
