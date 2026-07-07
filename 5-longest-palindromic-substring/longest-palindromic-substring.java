@@ -15,7 +15,6 @@ class Solution {
         //Without DP;
         int max = 0;
         int start = 0;
-        int end = 0;
         int n = s.length();
         for (int i = 0; i < n; i++) {
             for (int j = i; j < n; j++) {
@@ -24,7 +23,6 @@ class Solution {
                     if ( len > max) {
                         max = len;
                         start = i;
-                        end = j;
                     }
                     
                 }
