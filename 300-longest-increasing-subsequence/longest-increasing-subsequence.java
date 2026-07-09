@@ -14,10 +14,17 @@ class Solution {
             }
         }
 
-        // Find the the max value in dp array
-        int max = 0;
-        for(int i = 0; i < dp.length; i++)
-           max = Math.max(dp[i],max);
-        return max+1;
+        //1 Find the the max value in dp array
+        // int max = 0;
+        // for(int i = 0; i < dp.length; i++)
+        //    max = Math.max(dp[i],max);
+        // return max+1;
+
+        //2nd approach to find max
+        int maxIndex = 0;
+        for(int i = 0 ; i < dp.length; i++)
+            if(dp[i] > dp[maxIndex] )
+            maxIndex = i;
+        return dp[maxIndex]+1;
     }
 }
