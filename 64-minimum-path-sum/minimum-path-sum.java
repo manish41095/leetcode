@@ -38,7 +38,7 @@ class Solution {
         int m = grid.length;
         int n = grid[0].length;
         int[][] dp = new int[m][n];
-        //Arrays.fill(dp, -1);
+        //Arrays.fill(dp, -1); - This works on 1d array
 
         for (int[] row : dp) {
             Arrays.fill(row, -1);
