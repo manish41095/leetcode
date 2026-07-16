@@ -13,25 +13,25 @@ class Solution {
         int right = Integer.MAX_VALUE;
         int down = Integer.MAX_VALUE;
         
-        if (j + 1 < n) {
-            right = solve(grid, i, j + 1, dp);
-        }
-
-        if (i + 1 < m) {
-            down = solve(grid, i + 1, j, dp);
-        }
-        
-        dp[i][j] = grid[i][j] + Math.min(right, down);
-        return dp[i][j];
-
-        // if (i == m - 1) {//only go right
-        //     return grid[i][j] + solve(grid, i, j + 1, m, n);
-        // } else if (j == n - 1) {//only go down
-        //     return grid[i][j] + solve(grid, i + 1, j, m, n);
-        // } else if (i < m - 1 && j < n - 1) {
-        //     return grid[i][j] + Math.min(solve(grid, i, j + 1, m, n), solve(grid, i + 1, j, m, n));
+        // if (j + 1 < n) {
+        //     right = solve(grid, i, j + 1, dp);
         // }
-        // return 0;
+
+        // if (i + 1 < m) {
+        //     down = solve(grid, i + 1, j, dp);
+        // }
+        
+       
+
+         if (i == m - 1) {//only go right
+              dp[i][j] = grid[i][j] + solve(grid, i, j + 1, dp);
+         } else if (j == n - 1) {//only go down
+            dp[i][j] = grid[i][j] + solve(grid, i + 1, j, dp);
+          } else if (i < m - 1 && j < n - 1) {
+             dp[i][j] =  grid[i][j] + Math.min(solve(grid, i, j + 1,dp), solve(grid, i + 1, j, dp));
+         }
+       // dp[i][j] = grid[i][j] + Math.min(right, down);
+        return dp[i][j];
     }
 
     public int minPathSum(int[][] grid) {
