@@ -10,57 +10,73 @@
  */
 class Solution {
    public ListNode sortList(ListNode head) {
-        return mergeSort(head);
+        //return mergeSort(head);
+        ArrayList<Integer> arr = new ArrayList<>();
+        ListNode temp = head;
+        while(temp!=null){
+            arr.add(temp.val);
+            temp = temp.next;
+        }
+        
+        Collections.sort(arr);
+        //arr.sort(null); this one also correct
+        ListNode temp2 = head;
+        for(int num: arr){
+          temp2.val = num;
+          temp2 = temp2.next;
+        }
+
+        return head;
     }
 
-    public ListNode mergeSort(ListNode head) {
-        if (head == null || head.next == null) {
-            return head;
-        }
-        ListNode slow = head;
-        ListNode fast = head;
-        ListNode prev = null;
-        while (fast != null && fast.next != null) {
-            prev = slow;
-            slow = slow.next;
-            fast = fast.next.next;
-        }
-        prev.next = null;
-        // recursive calls to break the list down
-        ListNode head1 = mergeSort(head);
-        ListNode head2 = mergeSort(slow);
-        // merging them back
-        ListNode ans = merge(head1, head2);
-        return ans;
-    }
+    // public ListNode mergeSort(ListNode head) {
+    //     if (head == null || head.next == null) {
+    //         return head;
+    //     }
+    //     ListNode slow = head;
+    //     ListNode fast = head;
+    //     ListNode prev = null;
+    //     while (fast != null && fast.next != null) {
+    //         prev = slow;
+    //         slow = slow.next;
+    //         fast = fast.next.next;
+    //     }
+    //     prev.next = null;
+    //     // recursive calls to break the list down
+    //     ListNode head1 = mergeSort(head);
+    //     ListNode head2 = mergeSort(slow);
+    //     // merging them back
+    //     ListNode ans = merge(head1, head2);
+    //     return ans;
+    // }
 
-    // merge two sorted linked list
-    public ListNode merge(ListNode head1, ListNode head2) {
-        ListNode ansHead = new ListNode(-1);
-        ListNode ansTail = ansHead;
-        while (head1 != null && head2 != null) {
-            if (head1.val <= head2.val) {
-                ansTail.next = new ListNode(head1.val);
-                head1 = head1.next;
-            } else {
-                ansTail.next = new ListNode(head2.val);
-                head2 = head2.next;
-            }
-            ansTail = ansTail.next;
-        }
-        while (head1 != null) {
-            ansTail.next = new ListNode(head1.val);
-            head1 = head1.next;
-            ansTail = ansTail.next;
-        }
-        while (head2 != null) {
-            ansTail.next = new ListNode(head2.val);
-            head2 = head2.next;
-            ansTail = ansTail.next;
-        }
-        ListNode t1 = ansHead;
-        ansHead = ansHead.next;
-        t1.next = null;
-        return ansHead;
-    }
+    // // merge two sorted linked list
+    // public ListNode merge(ListNode head1, ListNode head2) {
+    //     ListNode ansHead = new ListNode(-1);
+    //     ListNode ansTail = ansHead;
+    //     while (head1 != null && head2 != null) {
+    //         if (head1.val <= head2.val) {
+    //             ansTail.next = new ListNode(head1.val);
+    //             head1 = head1.next;
+    //         } else {
+    //             ansTail.next = new ListNode(head2.val);
+    //             head2 = head2.next;
+    //         }
+    //         ansTail = ansTail.next;
+    //     }
+    //     while (head1 != null) {
+    //         ansTail.next = new ListNode(head1.val);
+    //         head1 = head1.next;
+    //         ansTail = ansTail.next;
+    //     }
+    //     while (head2 != null) {
+    //         ansTail.next = new ListNode(head2.val);
+    //         head2 = head2.next;
+    //         ansTail = ansTail.next;
+    //     }
+    //     ListNode t1 = ansHead;
+    //     ansHead = ansHead.next;
+    //     t1.next = null;
+    //     return ansHead;
+    // }
 }
