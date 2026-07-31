@@ -11,6 +11,8 @@ class Solution {
         map.put('7', "pqrs");
         map.put('8', "tuv");
         map.put('9', "wxyz");
+        if(digits.length()==0)
+        return result;
         StringBuilder temp = new StringBuilder();
         solve(0, digits, temp);
         return result;
