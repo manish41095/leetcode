@@ -36,9 +36,6 @@ class Solution {
 
             for (int startCol = 0; startCol < 9; startCol += 3) {
                 int endCol = startCol + 2;
-                //if (board[startRow][startCol] == '.')
-                //    continue;
-
                 if (!isValidBox(board, startRow, endRow, startCol, endCol))
                     return false;
             }
