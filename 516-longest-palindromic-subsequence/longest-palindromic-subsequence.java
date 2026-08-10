@@ -3,7 +3,7 @@ class Solution {
         int n = s.length();
         int[][] dp = new int[n][n];
         for (int[] row : dp) {
-          Arrays.fill(row, -1);
+            Arrays.fill(row, -1);
         }
         return solve(s, 0, n - 1, dp);
     }
@@ -13,12 +13,12 @@ class Solution {
             return 0;
         if (i == j)
             return 1;
-        if(dp[i][j]!=-1)
-          return dp[i][j];
+        if (dp[i][j] != -1)
+            return dp[i][j];
         if (s.charAt(i) == s.charAt(j)) {
-            return dp[i][j] =  2 + solve(s, i + 1, j - 1, dp);
+            return dp[i][j] = 2 + solve(s, i + 1, j - 1, dp);
         } else {
-            return dp[i][j] =  Math.max(solve(s, i, j - 1, dp), solve(s, i + 1, j, dp));
+            return dp[i][j] = Math.max(solve(s, i, j - 1, dp), solve(s, i + 1, j, dp));
         }
     }
 }
