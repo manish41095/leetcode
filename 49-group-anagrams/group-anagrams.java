@@ -1,14 +1,14 @@
 class Solution {
     public String getCharCount(String s){
-        int[] charCount = new int[26];
-        char[] sToChar = s.toCharArray();
+        int[] freq = new int[26];
+        
         for(char c : s.toCharArray()){
-            charCount[c - 'a' ]++;
+            freq[c - 'a' ]++;
         }
 
         StringBuilder sb = new StringBuilder("");
         char c = 'a';
-        for(int i : charCount){
+        for(int i : freq){
             sb.append(c);
             sb.append(i);
             c++;
