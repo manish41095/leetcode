@@ -38,15 +38,8 @@ class Solution {
             if(!map.containsValue(value)){
                 map.put(key,value);
             }
-            else{
-                for(Map.Entry<Character, String> entry : map.entrySet()){
-                    if(entry.getValue().equals(value)){
-                        char entryKey = entry.getKey();
-                        if(entryKey!=key)
-                        return false;
-                    }
-                }
-            }
+            else return false;
+            
 
         }
         else{
