@@ -5,12 +5,13 @@ class Solution {
 
         List<Integer> result = new ArrayList<>();
         int pLen = p.length();
+        int sLen = s.length();
         // Count the frequency of character in string p
         for (char c : p.toCharArray())
             pCount[c - 'a']++;
 
         // Sliding window and  count the frequency  of char in String s
-        for (int i = 0; i < s.length(); i++) {
+        for (int i = 0; i < sLen; i++) {
             sCount[s.charAt(i) - 'a']++;
 
             //Remove the character that is out of the window
