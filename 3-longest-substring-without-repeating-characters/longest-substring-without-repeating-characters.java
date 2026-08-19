@@ -3,16 +3,21 @@ class Solution {
 
         Set<Character> charSet = new HashSet<>();
         int maxLen = 0;
+       
         int start = 0;
-        for(int end = 0 ; end < s.length(); end ++){
-            while(charSet.contains(s.charAt(end))){
-                charSet.remove(s.charAt(start));
-                start++;
+
+        for(int i = 0; i < s.length(); i++){
+            char c = s.charAt(i);
+            while(charSet.contains(c)){
+              charSet.remove(s.charAt(start));
+              start++;
             }
 
-            charSet.add(s.charAt(end));
-            maxLen = Math.max(maxLen, end-start+1);
+            charSet.add(c);
+            maxLen = Math.max(maxLen, i - start + 1);  
+            
         }
-      return maxLen;  
+
+        return maxLen;
     }
 }
