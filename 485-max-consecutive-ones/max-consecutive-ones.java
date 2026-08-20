@@ -11,9 +11,9 @@ class Solution {
                 count++;
                 maxCount = Math.max(count, maxCount); 
             }
-
-            if(nums[i] == 0)
+            else{
             count = 0;
+            }
 
         }
 
