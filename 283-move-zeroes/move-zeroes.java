@@ -3,17 +3,12 @@ class Solution {
 
         int n = nums.length;
         int count = 0;
-        for(int i = 0 ; i < n; i++){
-            if(nums[i] != 0){
-             nums[count] = nums[i];
-             count++;
-            }
-        }
+        for (int i = 0; i < n; i++)
+            if (nums[i] != 0)
+                nums[count++] = nums[i];
 
-        while(count < n){
-            nums[count] = 0;
-            count++;
-        }
-        
+        while (count < n)
+            nums[count++] = 0;
+
     }
 }
