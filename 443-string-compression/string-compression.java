@@ -31,12 +31,11 @@ class Solution {
 
         int write = 0;
         int read = 0;
-
-        while (read < chars.length) {
+        int n = chars.length;
+        while (read < n) {
             char curr = chars[read];
-            int count = 0;
-            // same char increase count 
-            while (read < chars.length && chars[read] == curr) {
+            int count = 0; 
+            while (read < n && chars[read] == curr) {
                 read++;
                 count++;
             }
