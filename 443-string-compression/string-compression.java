@@ -1,6 +1,6 @@
 class Solution {
     public int compress(char[] chars) {
-        //String str = new String(chars);
+      
        StringBuilder sb = new StringBuilder();
        int count = 1;
        int i = 1;
