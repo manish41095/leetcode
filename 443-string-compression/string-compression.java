@@ -1,30 +1,55 @@
 class Solution {
     public int compress(char[] chars) {
-      
-       StringBuilder sb = new StringBuilder();
-       int count = 1;
-       int i = 1;
-       sb.append(chars[0]);
+        // Approach1 with extra space 
+        //    StringBuilder sb = new StringBuilder();
+        //    int count = 1;
+        //    int i = 1;
+        //    sb.append(chars[0]);
 
-       while(i < chars.length){
-        if(chars[i] == chars[i-1]){
-            count++;
-        }
-        else{
-            if(count>1){
-                sb.append(count);
-                count = 1;
-            }
-            sb.append(chars[i]);
-        }
-        i++;
-       }
-        if(count>1){
-                sb.append(count);
+        //    while(i < chars.length){
+        //     if(chars[i] == chars[i-1]){
+        //         count++;
+        //     }
+        //     else{
+        //         if(count>1){
+        //             sb.append(count);
+        //             count = 1;
+        //         }
+        //         sb.append(chars[i]);
+        //     }
+        //     i++;
+        //    }
+        //     if(count>1){
+        //             sb.append(count);
+        //         }
+
+        //      for(int j = 0; j < sb.length(); j++)
+        //       chars[j] = sb.charAt(j);   
+        //    return sb.toString().length();
+
+        //Approach2 without extra space
+
+        int write = 0;
+        int read = 0;
+
+        while (read < chars.length) {
+            char curr = chars[read];
+            int count = 0;
+            // same char increase count 
+            while (read < chars.length && chars[read] == curr) {
+                read++;
+                count++;
             }
 
-         for(int j = 0; j < sb.length(); j++)
-          chars[j] = sb.charAt(j);   
-       return sb.toString().length();
+            chars[write++] = curr;
+
+            if (count > 1) {
+                String countStr = String.valueOf(count);
+                for (char c : countStr.toCharArray())
+                    chars[write++] = c;
+            }
+        }
+
+        return write;
     }
 }
