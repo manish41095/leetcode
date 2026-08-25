@@ -65,13 +65,10 @@ class Solution {
         int lastNum = nums[n - 1];
         int max = -1;
 
-        int firstCount = map.get(firstNum);
-        int lastCount = map.get(lastNum);
-
-        if (firstCount == 1)
+        if (map.get(firstNum) == 1)
             max = Math.max(firstNum, max);
 
-        if (lastCount == 1)
+        if (map.get(lastNum) == 1)
             max = Math.max(lastNum, max);
 
         return max;
