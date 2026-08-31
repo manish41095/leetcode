@@ -22,7 +22,7 @@ class Solution {
 
         //     return sb.toString();  
 
-        Map<Character, Integer> freq = new LinkedHashMap<>();
+        Map<Character, Integer> freq = new HashMap<>();
 
         for (char c : str.toCharArray()) {
             freq.put(c, freq.getOrDefault(c, 0) + 1);
