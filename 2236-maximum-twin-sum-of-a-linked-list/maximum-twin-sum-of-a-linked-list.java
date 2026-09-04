@@ -10,30 +10,63 @@
  */
 class Solution {
     public int pairSum(ListNode head) {
-        int sum = 0;
+        //Brut Force approach
+        // int sum = 0;
+        // ListNode curr = head;
+        // int j = 0;
+        // while (curr != null) {
+        //     j++;
+        //     curr = curr.next;
+        // }
+        // int[] arr = new int[j];
+        // int k = 0;
+        // while (head != null) {
+        //     arr[k] = head.val;
+        //     k++;
+        //     head = head.next;
+        // }
 
-        //int[] arr = new int[];
+        // for (int i = 0; i <= j / 2; i++) {
+        //     int currSum = arr[i] + arr[j - 1 - i];
+        //     sum = Math.max(sum, currSum);
+        // }
 
-        ListNode curr = head;
-        int j = 0;
+        // return sum;
+
+        //Optimal Approach
+
+        if (head == null)
+            return 0;
+
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        ListNode prev = null;
+        ListNode curr = slow;
         while (curr != null) {
-            j++;
-            curr = curr.next;
-        }
-        int[] arr = new int[j];
-        int k = 0;
-        while (head != null) {
-            arr[k] = head.val;
-            k++;
-            head = head.next;
+            ListNode next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
         }
 
-        for (int i = 0; i <= j / 2; i++) {
-            int currSum = arr[i] + arr[j - 1 - i];
-            sum = Math.max(sum, currSum);
+        ListNode secondHalf = prev;
+        ListNode firstHalf = head;
+        int maxSum = 0;
+
+        while (secondHalf != null) {
+            int currSum = firstHalf.val + secondHalf.val;
+            maxSum = Math.max(maxSum, currSum);
+            firstHalf = firstHalf.next;
+            secondHalf = secondHalf.next;
         }
 
-        return sum;
+        return maxSum;
 
     }
 }
