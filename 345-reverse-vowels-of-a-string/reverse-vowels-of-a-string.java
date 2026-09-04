@@ -1,38 +1,73 @@
 class Solution {
     public String reverseVowels(String s) {
 
-        char[] arr = s.toCharArray();
+        // char[] arr = s.toCharArray();
 
-        String vowels = "aeiouAEIOU";
-        int i = 0;
-        int j = s.length() - 1;
+        // String vowels = "aeiouAEIOU";
+        // int start = 0;
+        // int end = s.length() - 1;
 
-        while (i < j) {
+        // while (start < end) {
+        //     // Find fist vowel from start exit from while and then check for 2nd vowel and so on
+        //     while (start < end) {
+        //         char ch = arr[start];
+        //         if (vowels.indexOf(ch) != -1)
+        //             break;
+        //         start++;
+        //     }
+        //     // Find first vowel from last exit from while and then check for 2nd vowel and so on
+        //     while (start < end) {
+        //         char ch = arr[end];
+        //         if (vowels.indexOf(ch) != -1)
+        //             break;
+        //         end--;
+        //     }
+        //     // Here swap first from start and first from end vowel and so on
+        //     if (start < end) {
+        //         char temp = arr[start];
+        //         arr[start] = arr[end];
+        //         arr[end] = temp;
+        //         start++;
+        //         end--;
+        //     }
+        // }
 
-            while (i < j) {
-                char ch = arr[i];
-                if (vowels.indexOf(ch) != -1)
-                    break;
-                i++;
-            }
+        // return new String(arr);
 
-            while (i < j) {
-                char ch = arr[j];
-                if (vowels.indexOf(ch) != -1)
-                    break;
-                j--;
-            }
-
-            if (i < j) {
-                char temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-                i++;
-                j--;
-            }
+        if (s == null || s.length() <= 1) {
+            return s;
         }
 
-        return new String(arr);
+        // Convert the string to a character array for in-place swapping
+        char[] chars = s.toCharArray();
+
+        int start = 0;
+        int end = chars.length - 1;
+
+        String vowels = "aeiouAEIOU";
+
+        while (start < end) {
+            // Move start pointer forward if it's not a vowel (indexOf returns -1)
+            while (start < end && vowels.indexOf(chars[start]) == -1) {
+                start++;
+            }
+            // Move end pointer backward if it's not a vowel (indexOf returns -1)
+            while (start < end && vowels.indexOf(chars[end]) == -1) {
+                end--;
+            }
+
+            // Swap the vowels
+            char temp = chars[start];
+            chars[start] = chars[end];
+            chars[end] = temp;
+
+            // Move pointers inward
+            start++;
+            end--;
+        }
+
+        return new String(chars);
 
     }
+
 }
