@@ -12,21 +12,24 @@ class Solution {
 
     public void sum(int start, int kLeft, int sumNeeded, List<Integer> temp, List<List<Integer>> res) {
 
+        // Base case: successfully found a valid combination
         if (kLeft == 0 && sumNeeded == 0) {
             res.add(new ArrayList<>(temp));
             return;
         }
 
+        // Pruning: stop early if we exceed the size or the target sum
         if (kLeft < 0 || sumNeeded < 0)
             return;
 
+         // Loop through valid digits from 1 to 9
         for (int i = start; i <= 9; i++) {
             if (i > sumNeeded)
                 break;
 
-            temp.add(i);
-            sum(i + 1, kLeft - 1, sumNeeded - i, temp, res);
-            temp.remove(temp.size() - 1);
+            temp.add(i); // choose
+            sum(i + 1, kLeft - 1, sumNeeded - i, temp, res); // explore
+            temp.remove(temp.size() - 1); // Unchoose
         }
     }
 }
