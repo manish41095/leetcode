@@ -7,9 +7,15 @@ class Solution {
         //Consider empty string as well
         int[][] dp = new int[m+1][n+1];
 
-        //Intialyze dp matrix
-        for(int i=0; i<=m;i++) dp[i][0] = i;
-        for(int j=0; j<=n; j++) dp[0][j] =j;
+        // Base case: filling the first row (converting empty word1 to word2)
+        for (int j = 0; j <= n; j++) {
+            dp[0][j] = j;
+        }
+        
+        // Base case: filling the first column (converting word1 to empty word2)
+        for (int i = 0; i <= m; i++) {
+            dp[i][0] = i;
+        }
 
         for(int i = 1; i <= m ; i++)
             for(int j = 1; j <=n; j++)
