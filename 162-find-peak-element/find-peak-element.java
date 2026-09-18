@@ -5,12 +5,17 @@ class Solution {
 
         while (low < high) {
             int mid = low + (high - low) / 2;
+             // If the element to the right is greater, a peak must be on the right
             if (nums[mid] < nums[mid + 1]) {
                 low = mid + 1;
-            } else {
+            } 
+            // Otherwise, a peak is either at mid or to the left
+            else {
                 high = mid;
             }
         }
+
+        // low and high will meet at the peak element index
         return low;
     }
 }
