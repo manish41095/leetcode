@@ -1,7 +1,7 @@
 
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-
+        //Revised - 24 - 09 -26
         ListNode curr = new ListNode(-1);
         ListNode head = curr;
 
@@ -15,10 +15,10 @@ class Solution {
             }
             curr = curr.next;
         }
-        if (list1 == null) {
-             curr.next = list2;
-        } else {
+        if (list1 != null) {
              curr.next = list1;
+        } else {
+             curr.next = list2;
         }
         return head.next;
     }
