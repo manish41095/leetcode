@@ -15,28 +15,29 @@ class Solution {
         // }
         // return result.toString();
 
-
         //Optimal Approach 29-09-26
 
-        if(strs == null || strs.length == 0)
-        return "";
+        if (strs == null || strs.length == 0)
+            return "";
 
         String first = strs[0];
 
-        for(int i = 0 ; i < first.length(); i++){
+        // Loop through each character of the first string
+        for (int i = 0; i < first.length(); i++) {
 
             char ch = first.charAt(i);
 
-            for(int j = 1; j < strs.length; j++){
+            // Compare this character with the same position in all other strings
+            for (int j = 1; j < strs.length; j++) {
 
-                if(i == strs[j].length() || strs[j].charAt(i) != ch){
-                    return first.substring(0,i);
+                // Stop if we hit the end of a string or find a mismatch
+                if (i == strs[j].length() || strs[j].charAt(i) != ch) {
+                    return first.substring(0, i);
                 }
             }
         }
 
         return first;
-
 
     }
 }
