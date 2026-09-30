@@ -34,31 +34,40 @@ class Solution {
     // }
 
     //Approach2 
-    int maxLen = 0;
-    int start;
+    
 
-    public String longestPalindrome(String s) {
-        int n = s.length();
-        if (n < 2)
+    int maxLen = 0;
+    int start = 0;
+
+    public  String longestPalindrome(String s){
+        if(s.length() < 2)
             return s;
 
-        for (int i = 0; i < n - 1; i++) {
-            expand(s, i, i); // odd length string
-            expand(s, i, i + 1); // even length string 
-        }
-        return s.substring(start, start + maxLen);
+        for(int i = 0; i < s.length() - 1; i++){
+
+            //Odd length Palindrome
+            expand(s, i, i);
+            //Even length Palindrome
+            expand(s, i, i+1);
+        }  
+
+        return s.substring(start, start + maxLen);  
     }
 
-    public void expand(String s, int begin, int end) {
-        while (begin >= 0 && end < s.length() && s.charAt(begin) == s.charAt(end)) {
+    public void expand(String s, int begin, int end){
+
+        while(begin >= 0 && end < s.length() && s.charAt(begin) == s.charAt(end)){
             int len = end - begin + 1;
-            if (maxLen < len) {
-                start = begin;
+
+            if(maxLen < len){
                 maxLen = len;
+                start = begin;
             }
+
             begin--;
             end++;
         }
-
     }
 }
+
+
