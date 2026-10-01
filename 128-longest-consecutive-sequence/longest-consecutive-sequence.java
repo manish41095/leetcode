@@ -1,5 +1,7 @@
 class Solution {
     public int longestConsecutive(int[] nums) {
+        //Revision 01-10-2026
+        // Build the set to achieve O(1) lookups
         Set<Integer> set = new HashSet<>();
 
         int maxLen = 0;
@@ -8,11 +10,11 @@ class Solution {
         }
 
         for (int num : set) {
-
+            // A number is a sequence start when num - 1 is absent.
             if (!set.contains(num - 1)) {
                 int currLen = 1;
                 int current = num;
-
+                // Expand the sequence forward
                 while (set.contains(current + 1)) {
                     currLen++;
                     current++;
