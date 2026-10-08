@@ -8,12 +8,12 @@ class Solution {
 
         while (low <= high) {
             int mid = low + (high - low) / 2;
-
+            // Use division (x / mid) instead of (mid * mid) to prevent integer overflow
             if (mid <= x / mid) {
-                ans = mid;
-                low = mid + 1;
+                ans = mid; // mid could be the answer, save it
+                low = mid + 1; // Try to find a larger integer
             } else {
-                high = mid - 1;
+                high = mid - 1; // mid is too large, search the left half
             }
 
         }
