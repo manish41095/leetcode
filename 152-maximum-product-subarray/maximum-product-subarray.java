@@ -1,23 +1,26 @@
 class Solution {
     public int maxProduct(int[] nums) {
         int n = nums.length;
-        int leftProd = 1;
-        int rightProd = 1;
-        int ans = Integer.MIN_VALUE;
+        int globalMax = nums[0];
+        int currentMax = nums[0];
+        int currentMin = nums[0];
 
-        for (int i = 0; i < n; i++) {
-            //If any of left or right product becomes 0 update it to 1 
-            // Reset to 1 if the running product became 0
-            if (leftProd == 0) leftProd = 1;
-            if (rightProd == 0) rightProd = 1;
+        for (int i = 1; i < n; i++) {
+            int num = nums[i];
 
-            leftProd *= nums[i];
-            rightProd *= nums[n - 1 - i];
+            if(num < 0){
+                int temp = currentMax;
+                currentMax = currentMin;
+                currentMin = temp;
+            }
 
-            ans = Math.max(ans, Math.max(leftProd, rightProd));
+            currentMax = Math.max(nums[i], currentMax * nums[i]);
+            currentMin = Math.min(nums[i], currentMin * nums[i]);
+
+            globalMax = Math.max(currentMax, globalMax);
 
         }
 
-        return ans;
+        return globalMax;
     }
 }
