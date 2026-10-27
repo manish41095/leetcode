@@ -21,9 +21,10 @@ class LRUCache {
     public LRUCache(int capacity) {
         this.capacity = capacity;
         this.cache = new HashMap<>();
-        //Created dummy node
-        head = new Node(0, 0);
-        tail = new Node(0, 0);
+
+        // Initialize dummy head and tail to simplify boundary edge-cases
+        head = new Node(-1, -1);
+        tail = new Node(-1, -1);
 
         head.next = tail;
         tail.prev = head;
@@ -31,12 +32,10 @@ class LRUCache {
     }
 
     public int get(int key) {
-
-        Node node = cache.get(key);
-
-        if (node == null)
+         if (!cache.containsKey(key)) {
             return -1;
-
+        }
+        Node node = cache.get(key);
         // This node was accessed, so it becomes most recently used
         moveToFront(node);
 
@@ -45,22 +44,22 @@ class LRUCache {
     }
 
     public void put(int key, int value) {
-        Node existingNode = cache.get(key);
-
-        if (existingNode != null) {
-            existingNode.value = value;
-            moveToFront(existingNode);
-            return;
-        }
-
-        Node newNode = new Node(key, value);
-        cache.put(key, newNode);
-        addFirst(newNode);
-
-        // Remove the least recently used entry if capacity is exceeded
-        if (cache.size() > capacity) {
-            Node lruNode = removeLast();
-            cache.remove(lruNode.key);
+         if (cache.containsKey(key)) {
+            Node node = cache.get(key);
+            node.value = value; // Update value
+            moveToFront(node);   // Mark as most recently used
+        } else {
+            // Evict if cache is at maximum capacity
+            if (cache.size() == capacity) {
+                Node lruNode = tail.prev; // The node right before dummy tail
+                removeNode(lruNode);
+                cache.remove(lruNode.key);
+            }
+            
+            // Insert the new key-value pair
+            Node newNode = new Node(key, value);
+            addFirst(newNode);
+            cache.put(key, newNode);
         }
 
     }
