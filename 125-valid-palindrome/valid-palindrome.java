@@ -1,15 +1,11 @@
 class Solution {
-    //Revision 04-10-2026
     public boolean isPalindrome(String s) {
-      String cleanStr = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+     s = s.replaceAll("[^a-zA-Z0-9]","").toLowerCase();
+     int  n = s.length();
+     for(int i = 0; i< n/2; i++)
+        if(s.charAt(i)!= s.charAt(n-1-i))
+            return false;
 
-      int n = cleanStr.length();
-
-      for(int i = 0; i < n/2; i++){
-            if(cleanStr.charAt(i) != cleanStr.charAt(n-i-1)){
-                return false;
-            }
-      }
-      return true; 
+     return true;       
     }
 }
