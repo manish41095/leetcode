@@ -1,27 +1,17 @@
 class Solution {
     public int pivotIndex(int[] nums) {
-
         int n = nums.length;
         int leftSum = 0;
-        int rightSum = 0;
-        int totalSum = 0;
 
-        // Step 1: Calculate the total sum of the entire array
-        for (int num : nums) {
-            totalSum += num;
-        }
+        int sum = 0;
+        for (int i = 0; i < n; i++)
+            sum += nums[i];
 
-        // Step 2: Iterate through the array and check the pivot condition
         for (int i = 0; i < n; i++) {
-
-            // Right sum is totalSum minus leftSum minus the current element
-            rightSum = totalSum - leftSum - nums[i];
-
-            // If they match, we found our leftmost pivot index
-            if (leftSum == rightSum)
+            // Right sum is calculated as: totalSum - leftSum - currentElement
+            if (leftSum == sum - leftSum - nums[i])
                 return i;
-
-            // Add current element to leftSum for the next iteration
+            // Update left sum for the next index
             leftSum += nums[i];
 
         }
