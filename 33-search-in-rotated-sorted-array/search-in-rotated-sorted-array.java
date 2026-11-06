@@ -9,7 +9,7 @@ class Solution {
             if(nums[mid] == target)
                 return mid;
 
-            if(nums[mid] <= nums[high]){
+            if(nums[mid] <= nums[high]){ // Right array sorted 
                if(nums[mid] <= target && target <= nums[high])
                 {
                     low = mid + 1;
@@ -20,7 +20,8 @@ class Solution {
                 
             } 
 
-            if(nums[low] <= nums[mid]){
+            else//(nums[low] <= nums[mid])
+              { // left array sorted 
                 if(nums[low] <= target && target<= nums[mid]){
                     high = mid -1;
                 }
