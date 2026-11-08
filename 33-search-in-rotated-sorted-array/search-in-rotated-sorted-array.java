@@ -3,34 +3,30 @@ class Solution {
         int low = 0;
         int high = nums.length - 1;
 
-        while(low <= high){
-            int mid = low + (high - low)/2;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
 
-            if(nums[mid] == target)
+            if (nums[mid] == target)
                 return mid;
 
-            if(nums[mid] <= nums[high]){ // Right array sorted 
-               if(nums[mid] <= target && target <= nums[high])
-                {
+          else if (nums[mid] <= nums[high]) { // Right array sorted 
+                if (nums[mid] <= target && target <= nums[high]) {
                     low = mid + 1;
-                }
-                else{
+                } else {
                     high = mid - 1;
                 }
-                
-            } 
 
-            else//(nums[low] <= nums[mid])
-              { // left array sorted 
-                if(nums[low] <= target && target<= nums[mid]){
-                    high = mid -1;
-                }
-                else{
+            }
+
+            else { // left array sorted 
+                if (nums[low] <= target && target <= nums[mid]) {
+                    high = mid - 1;
+                } else {
                     low = mid + 1;
                 }
 
             }
         }
         return -1;
-    } 
+    }
 }
