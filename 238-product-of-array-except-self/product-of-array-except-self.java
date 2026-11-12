@@ -22,20 +22,17 @@ class Solution {
 
         //Approach 2 
         int n = nums.length;
-        int prod = 1;
         int[] ans = new int[n];
-
-        for(int i = 0 ; i < n; i++){
+        int prod = 1;
+        for(int i = 0; i < n ; i++){
             ans[i] = prod;
             prod *= nums[i];
         }
-
-        prod = 1;
-
-        for(int i = n-1; i >=0; i--){
-            ans[i] = prod*ans[i];
+        prod  = 1;
+        for(int i = n-1; i>=0 ; i--){
+            ans[i] = prod * ans[i];
             prod *= nums[i];
-        }
+        } 
         return ans;
     }
 }
