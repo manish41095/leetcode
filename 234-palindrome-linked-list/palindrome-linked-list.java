@@ -25,6 +25,8 @@ class Solution {
         // 2. Reverse the second half of the linked list
         ListNode secondHalfHead = reverse(slow);
 
+        ListNode copySecondHalf = secondHalfHead;
+
         boolean isPalindrome = true;
         // 3. Compare the first half and the reversed second half
         while(secondHalfHead != null){
@@ -35,6 +37,9 @@ class Solution {
              firstHalfHead = firstHalfHead.next;
              secondHalfHead = secondHalfHead.next;  
         }
+
+        // 4. Restore the original list structure (good interview practice)
+        reverse(copySecondHalf);
 
         return isPalindrome;
         
