@@ -20,7 +20,9 @@ class Solution {
     public boolean canEatPile(int [] piles, int h, int speed){
         int hour = 0;
         for(int pile : piles)
-            hour += Math.ceil((double)pile/speed);
+          //  hour += Math.ceil((double)pile/speed);
+          // Equivalent to Math.ceil((double) pile / speed) using integer arithmetic
+            hour += (pile + speed - 1L) / speed;
 
         return hour <= h ;    
     }
